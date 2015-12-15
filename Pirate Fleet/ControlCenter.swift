@@ -85,7 +85,11 @@ struct Mine: PenaltyCell {
         self.penaltyText = penaltyText
         self.guaranteesHit = false
     }
-    
+    init(location: GridLocation, penaltyText: String) {
+        self.location = location
+        self.penaltyText = penaltyText
+        self.guaranteesHit = true
+    }
     
 }
 
@@ -127,16 +131,22 @@ class ControlCenter {
         //let xLargeShip = Ship(length: 5, location: GridLocation(x: 7, y: 2), isVertical: true, isWooden: false, hitTracker: HitTracker())
         human.addShipToGrid(xLargeShip)
         
-        let mine1 = Mine(location: GridLocation(x: 6, y: 0), penaltyText: "test", guaranteesHit: true)
+        let mine1 = Mine(location: GridLocation(x: 6, y: 0), penaltyText: "Mine!!!", guaranteesHit: true)
         human.addMineToGrid(mine1)
         
-        let mine2 = Mine(location: GridLocation(x: 3, y: 3), penaltyText: "test", guaranteesHit: true)
+        let mine2 = Mine(location: GridLocation(x: 3, y: 3), penaltyText: "Mine!!!", guaranteesHit: true)
         human.addMineToGrid(mine2)
         
-        let seamonster1 = SeaMonster(location: GridLocation(x: 5, y: 6), penaltyText: "test", guaranteesHit: true)
+        let mine3 = Mine(location: GridLocation(x: 4, y: 4), penaltyText: "Mine!!!")
+        human.addMineToGrid(mine3)
+        
+        let mine4 = Mine(location: GridLocation(x: 6, y: 4), penaltyText: "Mine!!!")
+        human.addMineToGrid(mine4)
+        
+        let seamonster1 = SeaMonster(location: GridLocation(x: 5, y: 6), penaltyText: "Sea Monster!!!", guaranteesHit: true)
         human.addSeamonsterToGrid(seamonster1)
         
-        let seamonster2 = SeaMonster(location: GridLocation(x: 2, y: 2), penaltyText: "test", guaranteesHit: true)
+        let seamonster2 = SeaMonster(location: GridLocation(x: 2, y: 2), penaltyText: "Sea Monster!!!", guaranteesHit: true)
         human.addSeamonsterToGrid(seamonster2)
     }
     
