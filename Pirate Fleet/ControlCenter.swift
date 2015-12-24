@@ -22,8 +22,11 @@ struct Ship {
             let start = self.location
             let end: GridLocation = ShipEndLocation(self)
             var occupiedCells = [GridLocation]()
-            occupiedCells.append(start)
-            occupiedCells.append(end)
+            for x in start.x...end.x {
+                for y in start.y...end.y {
+                    occupiedCells.append(GridLocation(x: x, y: y))
+                }
+            }
             return occupiedCells
         }
     }
@@ -55,7 +58,7 @@ struct Ship {
         self.length = length
         self.location = location
         self.isVertical = isVertical
-        self.isWooden = true
+        self.isWooden = isWooden
         self.hitTracker = hitTracker
     }
 }
@@ -112,7 +115,7 @@ class ControlCenter {
         let largeShip = Ship(length: 4, location: GridLocation(x: 6, y: 3), isVertical: true, hitTracker: HitTracker())
         human.addShipToGrid(largeShip)
         
-        let xLargeShip = Ship(length: 5, location: GridLocation(x: 7, y: 2), isVertical: true, hitTracker: HitTracker())
+        let xLargeShip = Ship(length: 5, location: GridLocation(x: 7, y: 2), isVertical: true, isWooden: true, hitTracker: HitTracker())
         human.addShipToGrid(xLargeShip)
         
         let mine1 = Mine(location: GridLocation(x: 3, y: 0), penaltyText: "Mine!!!", guaranteesHit: true)
@@ -121,7 +124,7 @@ class ControlCenter {
         let mine2 = Mine(location: GridLocation(x: 4, y: 4), penaltyText: "Mine!!!")
         human.addMineToGrid(mine2)
         
-        let seamonster1 = SeaMonster(location: GridLocation(x: 5, y: 6), penaltyText: "Sea Monster!!!", guaranteesHit: true)
+        let seamonster1 = SeaMonster(location: GridLocation(x: 5, y: 6), penaltyText: "Sea Monster!!!", guaranteesHit: false)
         human.addSeamonsterToGrid(seamonster1)
         
         let seamonster2 = SeaMonster(location: GridLocation(x: 2, y: 2), penaltyText: "Sea Monster!!!", guaranteesHit: true)
