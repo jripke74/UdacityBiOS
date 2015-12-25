@@ -74,12 +74,12 @@ struct Mine: PenaltyCell {
     var guaranteesHit: Bool
     var penaltyText: String
     
-    init(location: GridLocation, penaltyText: String, guaranteesHit: Bool) {
+    init(location: GridLocation, penaltyText: String) {
         self.location = location
         self.penaltyText = penaltyText
         self.guaranteesHit = false
     }
-    init(location: GridLocation, penaltyText: String) {
+    init(location: GridLocation, penaltyText: String, guaranteesHit: Bool) {
         self.location = location
         self.penaltyText = penaltyText
         self.guaranteesHit = true
@@ -95,7 +95,7 @@ struct SeaMonster: PenaltyCell {
     init(location: GridLocation, penaltyText: String, guaranteesHit: Bool) {
         self.location = location
         self.penaltyText = penaltyText
-        self.guaranteesHit = false
+        self.guaranteesHit = true
     }
 }
 
